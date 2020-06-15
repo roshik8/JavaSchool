@@ -8,13 +8,7 @@ public class GSM {
     double costFuel;
     double consumptionFuel;
 
-    /**
-     * Получение наименования типа автомобиля по его коду
-     *
-     * @param car_code
-     * @return
-     */
-    public static String GetCarName(int car_code) {
+    public static String getCarName(int car_code) {
         String carName = "";
         switch (car_code) {
             case 100:
@@ -33,13 +27,7 @@ public class GSM {
         return carName;
     }
 
-    /**
-     * Получение стоимости топлива для передаваемого типа автомобиля
-     *
-     * @param car_code
-     * @return
-     */
-    public static double GetFuelCost(int car_code) {
+    public static double getFuelCost(int car_code) {
         double cost = 0.0;
         switch (car_code) {
             case 100:
@@ -58,13 +46,8 @@ public class GSM {
         return cost;
     }
 
-    /**
-     * Получение расхода топлива на 100 км по типу автомобиля
-     *
-     * @param car_code
-     * @return
-     */
-    public static double GetConsumption(int car_code) {
+
+    public static double getConsumption(int car_code) {
         double consumption = 0.0;
         switch (car_code) {
             case 100:
@@ -83,12 +66,12 @@ public class GSM {
         return consumption;
     }
 
-    public static int[] GetArrCarCode(String[] arr) {
+    public static int[] getArrCarCode(String[] arr) {
         int countDiffCarCode = 0;
         int[] carCode = new int[arr.length];
 
         for (int i = 0; i < arr.length; i++) {
-            int carCodeCurr = GetCarCode(arr[i]);
+            int carCodeCurr = getCarCode(arr[i]);
             boolean carCodeAlreadyAdd = false;
 
             for (int j = 0; j < countDiffCarCode; j++) {
@@ -121,78 +104,77 @@ public class GSM {
         return carDiffCode;
     }
 
-    public static int GetNumberCar(String car) {
+    public static int getNumberCar(String car) {
         return Integer.parseInt(car.substring(car.indexOf("_") + 1, car.indexOf("-")));
     }
 
-    public static int GetDistanceCar(String car) {
+    public static int getDistanceCar(String car) {
         return Integer.parseInt(car.substring(car.indexOf("-") + 1, car.indexOf("-") == car.lastIndexOf("-") ? car.length() : car.lastIndexOf("-")));
     }
 
-    public static int GetDopParamCar(String car) {
+    public static int getDopParamCar(String car) {
 
         return car.indexOf("-") == car.lastIndexOf("-") ? 0 : Integer.parseInt(car.substring(car.lastIndexOf("-") + 1));
 
     }
 
-    public static int GetCarCode(String car) {
+    public static int getCarCode(String car) {
         return Integer.parseInt(car.substring(1, car.indexOf("_")));
     }
 
-    public static double GetSumGsm(double fuelCost, double consum, double dist) {
+    public static double getSumGsm(double fuelCost, double consum, double dist) {
         return (fuelCost * consum * dist) / 100;
     }
 
-    public static double GetAllGsm(String[] arr) {
+    public static double getAllGsm(String[] arr) {
         double sum = 0;
 
         for (String i : arr) {
-            int carCode = GetCarCode(i);
-            int dist = GetDistanceCar(i);
-            sum += GetSumGsm(GetFuelCost(carCode), GetConsumption(carCode), dist);
+            int carCode = getCarCode(i);
+            int dist = getDistanceCar(i);
+            sum += getSumGsm(getFuelCost(carCode), getConsumption(carCode), dist);
         }
         return sum;
     }
 
-    public static double GetTypeCarGsm(String[] arr, int carCode) {
+    public static double getTypeCarGsm(String[] arr, int carCode) {
         double sum = 0;
         for (String i : arr) {
-            int carCodeArr = GetCarCode(i);
-            sum += GetCarCode(i) == carCode ? GetSumGsm(GetFuelCost(carCodeArr), GetConsumption(carCodeArr), GetDistanceCar(i)) : 0;
-
+            int carCodeArr = getCarCode(i);
+            sum += getCarCode(i) == carCode ? getSumGsm(getFuelCost(carCodeArr), getConsumption(carCodeArr), getDistanceCar(i)) : 0;
         }
         return sum;
     }
 
-    public static String GetMaxTypeCarGsm(String[] arr) {
+    public static String getMaxTypeCarGsm(String[] arr) {
         int carCodeMax = 100;
         for (int i = 100; i < 500; i += 100) {
-            if (GetTypeCarGsm(arr, i) > GetTypeCarGsm(arr, carCodeMax))
+            if (getTypeCarGsm(arr, i) > getTypeCarGsm(arr, carCodeMax))
                 carCodeMax = i;
         }
 
-        return GetCarName(carCodeMax);
+        return getCarName(carCodeMax);
     }
 
-    public static String GetMinTypeCarGsm(String[] arr) {
+    public static String getMinTypeCarGsm(String[] arr) {
         int carCodeMin = 100;
-        for (int i : GetArrCarCode(arr)) {
-            if (GetTypeCarGsm(arr, i) < GetTypeCarGsm(arr, carCodeMin))
+        for (int i : getArrCarCode(arr)) {
+            if (getTypeCarGsm(arr, i) < getTypeCarGsm(arr, carCodeMin))
                 carCodeMin = i;
         }
 
-        return GetCarName(carCodeMin);
+        return getCarName(carCodeMin);
     }
 
-    public static String[] GetInfoCar(String[] arr, int carCode) {
+    public static String[] getInfoCar(String[] arr, int carCode) {
         int countCarCode = 0;
         for (String i : arr) {
-            countCarCode += GetCarCode(i) == carCode ? 1 : 0;
+            countCarCode += getCarCode(i) == carCode ? 1 : 0;
         }
         String[] CarArray = new String[countCarCode];
 
         for (int i = 0, j = 0; i < arr.length; i++) {
-            if (GetCarCode(arr[i]) == carCode) {
+            if (getCarCode(arr[i]) == carCode) {
                 CarArray[j++] = arr[i];
             }
         }
@@ -201,10 +183,10 @@ public class GSM {
 
     }
 
-    public static String[] SortCarArray(String[] arr) {
+    public static String[] sortCarArray(String[] arr) {
         for (int i = arr.length - 1; i > 0; i--) {
             for (int j = 0; j < i; j++) {
-                if (GetDistanceCar(arr[j]) > GetDistanceCar(arr[j + 1])) {
+                if (getDistanceCar(arr[j]) > getDistanceCar(arr[j + 1])) {
                     String tmp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = tmp;
@@ -215,16 +197,16 @@ public class GSM {
     }
 
     public static void main(String[] args) {
-        System.out.println("Расходы на ГСМ всего " + GetAllGsm(ts));
-        for (int i : GetArrCarCode(ts)) {
-            System.out.println("Расходы на " + GetCarName(i) + " " + GetTypeCarGsm(ts, i));
+        System.out.println("Расходы на ГСМ всего " + getAllGsm(ts));
+        for (int i : getArrCarCode(ts)) {
+            System.out.println("Расходы на " + getCarName(i) + " " + getTypeCarGsm(ts, i));
         }
-        System.out.println("Самые высокие расходы на " + GetMaxTypeCarGsm(ts));
-        System.out.println("Самые низкие расходы на " + GetMinTypeCarGsm(ts));
+        System.out.println("Самые высокие расходы на " + getMaxTypeCarGsm(ts));
+        System.out.println("Самые низкие расходы на " + getMinTypeCarGsm(ts));
 
-        for (int i : GetArrCarCode(ts)) {
-            for (String j : SortCarArray(GetInfoCar(ts, i))) {
-                System.out.printf("Тип авто: %s, Номер: %s, Пробег: %s, Доп.параметр: %s%n ", GetCarName(GetCarCode(j)), GetNumberCar(j), GetDistanceCar(j), GetDopParamCar(j));
+        for (int i : getArrCarCode(ts)) {
+            for (String j : sortCarArray(getInfoCar(ts, i))) {
+                System.out.printf("Тип авто: %s, Номер: %s, Пробег: %s, Доп.параметр: %s%n ", getCarName(getCarCode(j)), getNumberCar(j), getDistanceCar(j), getDopParamCar(j));
             }
         }
     }
