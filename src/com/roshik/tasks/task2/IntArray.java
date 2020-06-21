@@ -121,6 +121,10 @@ public class IntArray {
         //newList.print();
         //System.out.println(newList.getMaxElement());
         System.out.println(newList.getMinElement());
+        float b = 3f;
+        float c = 10f;
+        double a = (double)3/(double)10+(double)3/(double)10+(double)3/(double)10;
+        System.out.println(a);
 
     }
 }
