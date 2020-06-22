@@ -1,7 +1,5 @@
 package com.roshik.tasks.task4;
 
-import com.roshik.tasks.task3.BaseCar;
-
 public class LinkedList
 {
     private class Node
