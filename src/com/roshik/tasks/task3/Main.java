@@ -119,7 +119,7 @@ public class Main {
     public static String getMinCarCostSumGsm(BaseCar[] cars)
     {
         double minGsm = getTypeSumCostGsm(cars, cars[0].getClass().getSimpleName());
-        String carCodeMin = "BaseCar";
+        String carCodeMin = cars[0].getClass().getSimpleName();
         for (String i : getArrCarType(cars))
         {
             double currentSumCostGsm = getTypeSumCostGsm(cars, i);
