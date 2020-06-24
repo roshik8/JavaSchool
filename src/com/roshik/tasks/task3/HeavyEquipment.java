@@ -13,7 +13,6 @@ public int weightCargo;
     @Override
     public String getCarInfo(){
 
-        return "Тип авто: "+this.carName+", Номер: "+this.gosNumber+
-                ", Пробег: "+this.distance +", Доп. параметр: "+weightCargo;
+        return super.getCarInfo()+", Доп. параметр: "+weightCargo;
     }
 }

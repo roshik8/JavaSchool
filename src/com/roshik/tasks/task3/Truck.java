@@ -14,7 +14,6 @@ public class Truck extends BaseCar {
     @Override
     public String getCarInfo(){
 
-        return "Тип авто: "+this.carName+", Номер: "+this.gosNumber+
-                ", Пробег: "+this.distance +", Доп. параметр: "+volumeGoods;
+        return super.getCarInfo() +", Доп. параметр: "+volumeGoods;
     }
 }

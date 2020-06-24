@@ -1,6 +1,6 @@
 package com.roshik.tasks.task3;
 
-public class BaseCar {
+public abstract class BaseCar {
 
     protected int carCode;
     protected String carName;
