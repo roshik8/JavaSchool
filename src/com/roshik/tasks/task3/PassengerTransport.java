@@ -1,5 +1,7 @@
 package com.roshik.tasks.task3;
 
+
+
 public class PassengerTransport extends BaseCar {
 
     public int countPassengers;
@@ -17,4 +19,5 @@ public class PassengerTransport extends BaseCar {
 
         return super.getCarInfo() +", Доп. параметр: "+countPassengers;
     }
+
 }

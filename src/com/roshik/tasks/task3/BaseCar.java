@@ -1,8 +1,7 @@
 package com.roshik.tasks.task3;
 
-public abstract class BaseCar {
+public abstract class BaseCar implements ISumCostGsm {
 
-    protected int carCode;
     protected String carName;
     protected int gosNumber;
     protected int distance;
