@@ -1,13 +1,22 @@
 package com.roshik.tasks.task7;
 
 public  class PrimeNumbersPrinter implements IPagePrinter {
-    public int maxCharsInLine = 20; // Максимальное количество символов с строке
-    public int amountCharsInLine = 0;
-    public int maxLinesInPage = 5; // Максимальное количество строк на странице
-    public int amountLinesInPage = 0;
+
+    private int maxCharsInLine=100; // Максимальное количество символов с строке
+    private int maxLinesInPage=10; // Максимальное количество строк на странице
+
+    public void setMaxCharsInLine(int maxCharsInLine){
+        this.maxCharsInLine = maxCharsInLine;
+    }
+
+    public void setMaxLinesInPage(int maxLinesInPage){
+        this.maxLinesInPage = maxLinesInPage;
+    }
 
     @Override
     public void print(int[] arr){
+        int amountCharsInLine = 0;
+        int amountLinesInPage = 0;
         for (int a: arr) {
             System.out.print(a + " ");
             amountCharsInLine += String.valueOf(a).length() + 1;
