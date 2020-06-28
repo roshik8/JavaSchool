@@ -2,16 +2,8 @@ package com.roshik.tasks.task7;
 
 public class PrimeNumberGenerator implements IPrimeNumberGenerator {
 
-    private int max;
-    public int[] primeNumbersArray;
-
-    public PrimeNumberGenerator(int max){
-        this.max = max;
-    }
-
     @Override
-    public void generate(int max){
-
+    public int[] generate(int max){
         if (max >= 2) {
             int lengthSieve = max + 1;
             boolean[] sieve = new boolean[lengthSieve];
@@ -44,8 +36,11 @@ public class PrimeNumberGenerator implements IPrimeNumberGenerator {
                 if (sieve[i])
                     arrPrimeNumber[j++] = i;
             }
+            return arrPrimeNumber;
 
-            this.primeNumbersArray = arrPrimeNumber;
+        }
+        else {
+            return new int[]{1};
         }
 
     }

@@ -1,13 +1,13 @@
 package com.roshik.tasks.task7;
 
-public  class PrintPrimeNumbers implements  IPrint {
+public  class PrimeNumbersPrinter implements IPagePrinter {
+    public int maxCharsInLine = 20; // Максимальное количество символов с строке
+    public int amountCharsInLine = 0;
+    public int maxLinesInPage = 5; // Максимальное количество строк на странице
+    public int amountLinesInPage = 0;
 
     @Override
     public void print(int[] arr){
-        int maxCharsInLine = 20; // Максимальное количество символов с строке
-        int amountCharsInLine = 0;
-        int maxLinesInPage = 5; // Максимальное количество строк на странице
-        int amountLinesInPage = 0;
         for (int a: arr) {
             System.out.print(a + " ");
             amountCharsInLine += String.valueOf(a).length() + 1;
