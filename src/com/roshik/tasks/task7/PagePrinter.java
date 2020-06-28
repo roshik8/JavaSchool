@@ -1,6 +1,6 @@
 package com.roshik.tasks.task7;
 
-public  class PrimeNumbersPrinter implements IPagePrinter {
+public  class PagePrinter implements IPagePrinter {
 
     private int maxCharsInLine=100; // Максимальное количество символов с строке
     private int maxLinesInPage=10; // Максимальное количество строк на странице

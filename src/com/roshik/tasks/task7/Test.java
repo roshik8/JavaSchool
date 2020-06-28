@@ -9,11 +9,16 @@ public class Test {
 
         generator = new PrimeNumberGenerator();
 
-        printer  = new PrimeNumbersPrinter();
+        printer  = new PagePrinter();
         printer.setMaxCharsInLine(15);
         printer.setMaxLinesInPage(4);
 
-        int[] arr = generator.generate(1000);
+        int[] arr = generator.generate(1);
+        if(arr==null){
+            System.out.println("Невозможно создать массив");
+        }
+        else{
         printer.print(arr);
+        }
     }
 }
