@@ -1,8 +1,5 @@
 package com.roshik.tasks.task7;
 
-import com.roshik.tasks.task6.ConsoleLogger;
-import com.roshik.tasks.task6.ILogger;
-
 public class Test {
 
     public static IPrimeNumberGenerator generator;
