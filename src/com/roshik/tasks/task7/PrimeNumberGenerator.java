@@ -1,7 +1,10 @@
 package com.roshik.tasks.task7;
 
-public class PrimeNumberGenerator implements IPrimeNumberGenerator {
+import com.roshik.tasks.task6.ConsoleLogger;
+import com.roshik.tasks.task6.ILogger;
 
+public class PrimeNumberGenerator implements IPrimeNumberGenerator {
+    private static ILogger logger = new ConsoleLogger();
     @Override
     public int[] generate(int max) {
         if (max < 2)
@@ -42,6 +45,7 @@ public class PrimeNumberGenerator implements IPrimeNumberGenerator {
             if (sieve[i])
                 lengthPrimeNumbers++;
         }
+        logger.log("Количество простых числе: "+lengthPrimeNumbers);
         return lengthPrimeNumbers;
 
     }

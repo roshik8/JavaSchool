@@ -1,9 +1,13 @@
 package com.roshik.tasks.task5;
 
+import com.roshik.tasks.task6.ConsoleLogger;
+import com.roshik.tasks.task6.ILogger;
+
 public class Calculator
 {
     public BaseBinaryOperator[] binaryoperators;
     public BaseUnaryOperator[] unaryoperators;
+    private static ILogger logger = new ConsoleLogger();
 
     public Calculator()
     {
@@ -14,13 +18,13 @@ public class Calculator
     public double calculate(String expression)
     {
         expression = normalExpression(expression);
-
         return parseNormal(expression);
     }
 
     private static String normalExpression(String expression)
     {
         expression = expression.replace(" ","");
+        logger.log("Нормальное выражение: "+expression);
         return expression;
     }
 
