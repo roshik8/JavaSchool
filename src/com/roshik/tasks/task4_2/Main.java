@@ -9,7 +9,7 @@ public class Main {
         String str = "ananas";
         HashMap<Character, Integer> dictionary = new HashMap<>();
 
-        for (char c : str.toCharArray()) {
+        for (char c : str.toLowerCase().toCharArray()) {
             Integer freq = dictionary.getOrDefault(c, 0) + 1;
             dictionary.put(c, freq);
         }
